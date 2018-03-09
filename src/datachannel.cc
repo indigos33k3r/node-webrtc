@@ -16,7 +16,6 @@ using node_webrtc::DataChannelObserver;
 using v8::External;
 using v8::Function;
 using v8::FunctionTemplate;
-using v8::Handle;
 using v8::Integer;
 using v8::Local;
 using v8::Number;
@@ -361,7 +360,7 @@ NAN_SETTER(DataChannel::ReadOnly) {
   INFO("PeerConnection::ReadOnly");
 }
 
-void DataChannel::Init(Handle<Object> exports) {
+void DataChannel::Init(v8::Handle<Object> exports) {
   Local<FunctionTemplate> tpl = Nan::New<FunctionTemplate>(New);
   tpl->SetClassName(Nan::New("DataChannel").ToLocalChecked());
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
