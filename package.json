@@ -28,7 +28,8 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
-    "nan": "^2.9.2"
+    "nan": "^2.9.2",
+    "native-rtc-deps": "0.0.1"
   },
   "scripts": {
     "lint": "eslint lib/*.js lib/**/*.js test/*.js test/**/*.js examples/*.js examples/**/*.js karma.conf.js scripts/*.js",
