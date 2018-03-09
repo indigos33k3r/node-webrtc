@@ -68,6 +68,7 @@ class PeerConnectionFactory
   static uv_mutex_t _lock;
   static int _references;
 
+  std::unique_ptr<rtc::Thread> _networkThread;
   std::unique_ptr<rtc::Thread> _signalingThread;
   std::unique_ptr<rtc::Thread> _workerThread;
   rtc::scoped_refptr<webrtc::PeerConnectionFactoryInterface> _factory;
