@@ -7,7 +7,7 @@
  */
 #include "peerconnectionfactory.h"
 
-#include "webrtc/base/ssladapter.h"
+#include "webrtc/rtc_base/ssladapter.h"
 
 #include "common.h"
 

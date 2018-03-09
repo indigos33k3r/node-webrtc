@@ -12,8 +12,8 @@
 #include "uv.h"
 #include "v8.h"  // IWYU pragma: keep
 
-#include "webrtc/api/peerconnectionfactory.h"
-#include "webrtc/base/scoped_ref_ptr.h"
+#include "webrtc/pc/peerconnectionfactory.h"
+#include "webrtc/rtc_base/scoped_ref_ptr.h"
 #include "webrtc/modules/audio_device/include/audio_device.h"
 
 namespace node_webrtc {

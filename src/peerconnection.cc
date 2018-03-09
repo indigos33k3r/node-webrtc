@@ -7,7 +7,7 @@
  */
 #include "peerconnection.h"
 
-#include "webrtc/base/refcountedobject.h"
+#include "webrtc/rtc_base/refcountedobject.h"
 
 #include "common.h"
 #include "create-answer-observer.h"
