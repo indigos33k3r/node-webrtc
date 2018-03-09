@@ -35,6 +35,9 @@ PeerConnectionFactory::PeerConnectionFactory(rtc::scoped_refptr<webrtc::AudioDev
 
   bool result;
 
+  _networkThread = std::unique_ptr<rtc::Thread>(new rtc::Thread());
+  assert(_networkThread);
+
   _workerThread = std::unique_ptr<rtc::Thread>(new rtc::Thread());
   assert(_workerThread);
 
@@ -47,8 +50,8 @@ PeerConnectionFactory::PeerConnectionFactory(rtc::scoped_refptr<webrtc::AudioDev
   result = _signalingThread->Start();
   assert(result);
 
-  _factory = webrtc::CreatePeerConnectionFactory(_workerThread.get(), _signalingThread.get(), audioDeviceModule,
-          nullptr, nullptr);
+  _factory = webrtc::CreatePeerConnectionFactory(_networkThread.get(), _workerThread.get(), _signalingThread.get(), audioDeviceModule,
+          nullptr, nullptr, nullptr, nullptr);
   assert(_factory);
 
   TRACE_END;
