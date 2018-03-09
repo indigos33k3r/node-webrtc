@@ -13,14 +13,11 @@
 #include "peerconnection.h"
 #include "peerconnectionfactory.h"
 
-using v8::Handle;
-using v8::Object;
-
 void dispose(void*) {
   node_webrtc::PeerConnectionFactory::Dispose();
 }
 
-void init(Handle<Object> exports) {
+void init(v8::Handle<v8::Object> exports) {
   node_webrtc::PeerConnectionFactory::Init(exports);
   node_webrtc::PeerConnection::Init(exports);
   node_webrtc::DataChannel::Init(exports);

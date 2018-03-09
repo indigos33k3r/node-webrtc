@@ -24,7 +24,6 @@ using node_webrtc::PeerConnectionFactory;
 using v8::External;
 using v8::Function;
 using v8::FunctionTemplate;
-using v8::Handle;
 using v8::Integer;
 using v8::Local;
 using v8::Number;
@@ -277,7 +276,7 @@ NAN_METHOD(PeerConnection::New) {
 
       // Handle iceServers configuration
       if (strKey == "iceServers" && value->IsArray()) {
-        const Handle<Array> iceServers = Handle<Array>::Cast(value);
+        const v8::Handle<Array> iceServers = v8::Handle<Array>::Cast(value);
 
         // Iterate over all of the ice servers configured
         for (uint32_t j = 0; j < iceServers->Length(); j++) {
@@ -302,7 +301,7 @@ NAN_METHOD(PeerConnection::New) {
 
                 iceServer.uri = iceUrl;
               } else if ((iceServerKey == "url" || iceServerKey == "urls") && iceValue->IsArray()) {
-                Handle<Array> iceUrls = Handle<Array>::Cast(iceValue);
+                v8::Handle<Array> iceUrls = v8::Handle<Array>::Cast(iceValue);
 
                 for (uint32_t x = 0; x < iceUrls->Length(); x++) {
                   String::Utf8Value _iceUrlsEntry(iceUrls->Get(x)->ToString());
@@ -415,7 +414,7 @@ NAN_METHOD(PeerConnection::AddIceCandidate) {
   TRACE_CALL;
 
   PeerConnection* self = Nan::ObjectWrap::Unwrap<PeerConnection>(info.This());
-  Handle<Object> sdp = Handle<Object>::Cast(info[0]);
+  v8::Handle<Object> sdp = v8::Handle<Object>::Cast(info[0]);
 
   String::Utf8Value _candidate(sdp->Get(Nan::New("candidate").ToLocalChecked())->ToString());
   std::string candidate = *_candidate;
@@ -455,7 +454,7 @@ NAN_METHOD(PeerConnection::CreateDataChannel) {
   }
 
   String::Utf8Value label(info[0]->ToString());
-  Handle<Object> dataChannelDict = Handle<Object>::Cast(info[1]);
+  v8::Handle<Object> dataChannelDict = v8::Handle<Object>::Cast(info[1]);
 
   webrtc::DataChannelInit dataChannelInit;
   if (dataChannelDict->Has(Nan::New("id").ToLocalChecked())) {
@@ -572,7 +571,7 @@ NAN_GETTER(PeerConnection::GetLocalDescription) {
     sdi = self->_jinglePeerConnection->local_description();
   }
 
-  Handle<Value> value;
+  v8::Handle<Value> value;
   if (nullptr == sdi) {
     value = Nan::Null();
   } else {
@@ -599,7 +598,7 @@ NAN_GETTER(PeerConnection::GetRemoteDescription) {
     sdi = self->_jinglePeerConnection->remote_description();
   }
 
-  Handle<Value> value;
+  v8::Handle<Value> value;
   if (nullptr == sdi) {
     value = Nan::Null();
   } else {
@@ -671,7 +670,7 @@ NAN_SETTER(PeerConnection::ReadOnly) {
   INFO("PeerConnection::ReadOnly");
 }
 
-void PeerConnection::Init(Handle<Object> exports) {
+void PeerConnection::Init(v8::Handle<Object> exports) {
   Local<FunctionTemplate> tpl = Nan::New<FunctionTemplate>(New);
   tpl->SetClassName(Nan::New("PeerConnection").ToLocalChecked());
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
