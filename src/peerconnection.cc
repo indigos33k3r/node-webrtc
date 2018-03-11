@@ -233,12 +233,12 @@ void PeerConnection::OnDataChannel(rtc::scoped_refptr<webrtc::DataChannelInterfa
   TRACE_END;
 }
 
-void PeerConnection::OnAddStream(webrtc::MediaStreamInterface* stream) {
+void PeerConnection::OnAddStream(rtc::scoped_refptr<webrtc::MediaStreamInterface> stream) {
   TRACE_CALL;
   TRACE_END;
 }
 
-void PeerConnection::OnRemoveStream(webrtc::MediaStreamInterface* stream) {
+void PeerConnection::OnRemoveStream(rtc::scoped_refptr<webrtc::MediaStreamInterface> stream) {
   TRACE_CALL;
   TRACE_END;
 }

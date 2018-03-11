@@ -139,8 +139,8 @@ class PeerConnection
 
   virtual void OnDataChannel(rtc::scoped_refptr<webrtc::DataChannelInterface> data_channel);
 
-  virtual void OnAddStream(webrtc::MediaStreamInterface* stream);
-  virtual void OnRemoveStream(webrtc::MediaStreamInterface* stream);
+  virtual void OnAddStream(rtc::scoped_refptr<webrtc::MediaStreamInterface> stream);
+  virtual void OnRemoveStream(rtc::scoped_refptr<webrtc::MediaStreamInterface> stream);
 
   //
   // Nodejs wrapping.
