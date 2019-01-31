@@ -194,7 +194,7 @@ class PeerConnection
   rtc::scoped_refptr<SetLocalDescriptionObserver> _setLocalDescriptionObserver;
   rtc::scoped_refptr<SetRemoteDescriptionObserver> _setRemoteDescriptionObserver;
 
-  webrtc::AudioDeviceModule* _audioDeviceModule;
+  // webrtc::AudioDeviceModule* _audioDeviceModule;
   rtc::scoped_refptr<webrtc::PeerConnectionInterface> _jinglePeerConnection;
 
   std::shared_ptr<node_webrtc::PeerConnectionFactory> _factory;

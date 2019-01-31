@@ -126,7 +126,7 @@ void PeerConnection::Run(uv_async_t* handle, int status) {
       Local<Value> cargv[1];
       cargv[0] = Nan::New<External>(static_cast<void*>(&data->reports));
       Local<Value> argv[1];
-      argv[0] = Nan::New(RTCStatsResponse::constructor)->NewInstance(1, cargv);
+      argv[0] = Nan::NewInstance(Nan::New(RTCStatsResponse::constructor), 1, cargv).ToLocalChecked();
       callback->Call(1, argv);
     } else if (PeerConnection::VOID_EVENT & evt.type) {
       Local<Function> callback = Local<Function>::Cast(pc->Get(Nan::New("onsuccess").ToLocalChecked()));
@@ -174,7 +174,7 @@ void PeerConnection::Run(uv_async_t* handle, int status) {
       DataChannelObserver* observer = data->observer;
       Local<Value> cargv[1];
       cargv[0] = Nan::New<External>(static_cast<void*>(observer));
-      Local<Value> dc = Nan::New(DataChannel::constructor)->NewInstance(1, cargv);
+      Local<Value> dc = Nan::NewInstance(Nan::New(DataChannel::constructor), 1, cargv).ToLocalChecked();
 
       Local<Function> callback = Local<Function>::Cast(pc->Get(Nan::New("ondatachannel").ToLocalChecked()));
       Local<Value> argv[1];
@@ -499,7 +499,7 @@ NAN_METHOD(PeerConnection::CreateDataChannel) {
 
   Local<Value> cargv[1];
   cargv[0] = Nan::New<External>(static_cast<void*>(observer));
-  Local<Value> dc = Nan::New(DataChannel::constructor)->NewInstance(1, cargv);
+  Local<Value> dc = Nan::NewInstance(Nan::New(DataChannel::constructor), 1, cargv).ToLocalChecked();
 
   TRACE_END;
   info.GetReturnValue().Set(dc);
