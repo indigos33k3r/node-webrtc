@@ -40,10 +40,12 @@
             '-lwebrtc',
           ],
           'defines': [
-            'LUMIN=1',
-            # 'WEBRTC_MAC=1',
+            'WEBRTC_MAC=1',
             'WEBRTC_POSIX=1',
           ],
+        }],
+        ['"<!(echo $LUMIN)"=="1"', {
+          'defines': ['LUMIN'],
         }],
       ],
     },
