@@ -28,7 +28,7 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
-    "nan": "^2.9.2",
+    "nan": "^2.12.1",
     "native-rtc-deps": "0.0.2"
   },
   "scripts": {
